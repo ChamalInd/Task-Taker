@@ -1,0 +1,6 @@
+# data files
+to-do.db
+done.db
+
+# executables
+*.out
