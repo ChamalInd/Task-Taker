@@ -1,6 +1,7 @@
 # data files
-to-do.db
-done.db
+.to-do
+.done
 
 # executables
 *.out
+task-cli

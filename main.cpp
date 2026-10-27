@@ -1,6 +1,43 @@
-#include "scripts/functions.h"
+#include "helper.h"
 
-int main()
+int main(int argc, char *argv[])
 {
-	std::cout << "Hello" << std::endl;
+	if (argc == 1)
+	{
+		std::cout << "Type " << argv[0] << " help for more information" << std::endl;
+		return 0;
+	}
+
+	if (strcmp(argv[1], "help") == 0)
+	{
+		print_help(argv[0]);
+	}
+	else if (strcmp(argv[1], "add") == 0)
+	{	
+		
+	}
+	else if (strcmp(argv[1], "update") == 0)
+	{	
+
+	}
+	else if (strcmp(argv[1], "delete") == 0)
+	{	
+
+	}
+	else if (strcmp(argv[1], "mark-in-progress") == 0)
+	{	
+
+	}
+	else if (strcmp(argv[1], "mark-done") == 0)
+	{	
+
+	}
+	else if (strcmp(argv[1], "list") == 0)
+	{	
+
+	}
+	else 
+	{
+		std::cout << "Type " << argv[0] << " help for more information" << std::endl;
+	}
 }
