@@ -1,9 +1,4 @@
-#pragma once
-
-#include <iostream>
-#include <fstream>
-#include <string>
-
+#include "linker.h"
 
 void print_help(std::string app_name)
 {
@@ -20,4 +15,35 @@ void print_help(std::string app_name)
 	std::cout << "    " << app_name << " help -- Prints this help message." << std::endl;
 }
 
+void create_task(std::string task)
+{
+	if (task.length() < 1)
+	{
+		std::cout << "Task description is too small." << std::endl;
+		return;
+	}
 
+	std::vector<std::string> content = read_tasks();
+	
+	int no_of_tasks = stoi(content.at(0)) + 1;
+	
+	std::string new_task = std::to_string(no_of_tasks) + "," + task + ",todo";
+	content.push_back(new_task);
+
+	std::ofstream File(".tasks", std::ios::trunc);
+	if (!File.is_open())
+	{
+		std::cout << "Error occurred while trying to open the file." << std::endl;
+	}
+
+	content[0] = std::to_string(no_of_tasks);
+
+	for (std::string line : content)
+	{
+		File << line << std::endl;
+	}
+	
+	File.close();
+
+	std::cout << "Task added successfully (ID: " << no_of_tasks << ")" << std::endl;
+}

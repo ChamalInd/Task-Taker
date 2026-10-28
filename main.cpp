@@ -1,4 +1,4 @@
-#include "helper.h"
+#include "linker.h"
 
 int main(int argc, char *argv[])
 {
@@ -14,7 +14,12 @@ int main(int argc, char *argv[])
 	}
 	else if (strcmp(argv[1], "add") == 0)
 	{	
-		
+		if (argc != 3)
+		{
+			std::cout << "Incorrect format for the current option.\nSee help message for correct format." << std::endl;
+			return 1;
+		}
+		create_task(argv[2]);
 	}
 	else if (strcmp(argv[1], "update") == 0)
 	{	
