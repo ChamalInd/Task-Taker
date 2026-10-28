@@ -39,7 +39,26 @@ int main(int argc, char *argv[])
 	}
 	else if (strcmp(argv[1], "list") == 0)
 	{	
+		std::string option;
+		
+		if (argc == 3)
+		{
+			if (strcmp(argv[2], "done") == 0 || strcmp(argv[2], "todo") == 0 || strcmp(argv[2], "in-progress") == 0)
+			{
+				option = argv[2];
+			}
+			else {
+				std::cout << "Incorrect format for the current option.\nSee help message for correct format." << std::endl;
+				return 1;
+			}
+		} 
+		else if (argc == 2) option = "all";
+		else {
+			std::cout << "Incorrect format for the current option.\nSee help message for correct format." << std::endl;
+			return 1;
+		}
 
+		view_tasks(option);
 	}
 	else 
 	{
