@@ -6,6 +6,8 @@ std::vector<std::string> read_tasks()
 	if (!File.is_open())
 	{
 		std::ofstream File(".tasks");
+		File << "0" << std::endl;
+		File.close();
 		return {"0"};
 	}
 
@@ -32,7 +34,7 @@ std::vector<std::vector<std::string>> split_tasks(std::string option)
 		
 		for (char c : content[i])
 		{
-			if (c != ',') word = word + c;
+			if (c != '|') word = word + c;
 			else 
 			{
 				list.push_back(word);
@@ -75,7 +77,7 @@ ReturnType validate_task_id(std::string task)
 		return_type.return_status = ERROR;
 	}
 
-	if (return_type.task_id < 0 || return_type.task_id > return_type.no_of_tasks)
+	if (return_type.task_id < 1 || return_type.task_id > return_type.no_of_tasks)
 	{
 		std::cout << "The entered task ID is out of valid range." << std::endl;
 		return_type.return_status = ERROR;

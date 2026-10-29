@@ -27,7 +27,7 @@ void create_task(std::string task)
 	
 	int no_of_tasks = stoi(content.at(0)) + 1;
 	
-	std::string new_task = std::to_string(no_of_tasks) + "," + task + ",todo";
+	std::string new_task = std::to_string(no_of_tasks) + "|" + task + "|todo";
 	content.push_back(new_task);
 
 	std::ofstream File(".tasks", std::ios::trunc);
@@ -73,6 +73,7 @@ void delete_task(std::string task)
 	if (!File.is_open())
 	{
 		std::cout << "Error occurred while trying to open the file." << std::endl;
+		return;
 	}
 	
 	int counter = 1;
@@ -81,7 +82,7 @@ void delete_task(std::string task)
 	for (int i = 0; i < seperated_content.size(); i++)
 	{
 		if (i == (return_data.task_id - 1)) continue;
-		File << counter << "," << seperated_content[i][1] << "," << seperated_content[i][2] << std::endl;
+		File << counter << "|" << seperated_content[i][1] << "|" << seperated_content[i][2] << std::endl;
 		counter++;
 	}
 
@@ -102,6 +103,7 @@ void update_task(std::string task_id, std::string task)
 	if (!File.is_open())
 	{
 		std::cout << "Error occurred while trying to open the file." << std::endl;
+		return;
 	}
 	File << return_data.no_of_tasks << std::endl;
 	
@@ -109,11 +111,11 @@ void update_task(std::string task_id, std::string task)
 	{
 		if (i == (return_data.task_id - 1)) 
 		{
-			File << i + 1 << "," << task << "," << seperated_content[i][2] << std::endl;
+			File << i + 1 << "|" << task << "|" << seperated_content[i][2] << std::endl;
 		}
 		else
 		{
-			File << i + 1 << "," << seperated_content[i][1] << "," << seperated_content[i][2] << std::endl;
+			File << i + 1 << "|" << seperated_content[i][1] << "|" << seperated_content[i][2] << std::endl;
 		}
 	}
 
@@ -134,6 +136,7 @@ void update_task_status(std::string status, std::string task)
 	if (!File.is_open())
 	{
 		std::cout << "Error occurred while trying to open the file." << std::endl;
+		return;
 	}
 	File << return_data.no_of_tasks << std::endl;
 	
@@ -146,11 +149,11 @@ void update_task_status(std::string status, std::string task)
 	{
 		if (i == (return_data.task_id - 1)) 
 		{
-			File << i + 1 << "," << seperated_content[i][1] << "," << status_name << std::endl;
+			File << i + 1 << "|" << seperated_content[i][1] << "|" << status_name << std::endl;
 		}
 		else
 		{
-			File << i + 1 << "," << seperated_content[i][1] << "," << seperated_content[i][2] << std::endl;
+			File << i + 1 << "|" << seperated_content[i][1] << "|" << seperated_content[i][2] << std::endl;
 		}
 	}
 
