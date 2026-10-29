@@ -41,12 +41,14 @@ int main(int argc, char *argv[])
 		delete_task(argv[2]);
 
 	}
-	else if (strcmp(argv[1], "mark-in-progress") == 0)
+	else if (strcmp(argv[1], "mark-in-progress") == 0 || strcmp(argv[1], "mark-done") == 0)
 	{	
-
-	}
-	else if (strcmp(argv[1], "mark-done") == 0)
-	{	
+		if (argc != 3)
+		{
+			std::cout << "Incorrect format for the current option.\nSee help message for correct format." << std::endl;
+			return 1;
+		}
+		update_task_status(argv[1], argv[2]);
 
 	}
 	else if (strcmp(argv[1], "list") == 0)
