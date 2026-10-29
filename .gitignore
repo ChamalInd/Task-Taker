@@ -4,3 +4,4 @@
 # executables
 *.out
 task-cli
+.DS_Store
