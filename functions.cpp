@@ -80,6 +80,12 @@ void delete_task(std::string task)
 	
 	int no_of_tasks = stoi(content.at(0));
 
+	if (no_of_tasks == 0)
+	{
+		std::cout << "No tasks are available to delete.\nSee help message to know how to create new tasks." << std::endl;
+		return;
+	}
+
 	if (task_id < 0 || task_id > no_of_tasks)
 	{
 		std::cout << "The entered task ID is out of valid range." << std::endl;
@@ -105,4 +111,59 @@ void delete_task(std::string task)
 	File.close();
 
 	std::cout << "Task removed successfully." << std::endl;
+}
+
+void update_task(std::string task_id, std::string task)
+{
+	int updating_task;
+	try 
+	{
+		updating_task = stoi(task_id);
+	}
+	catch (std::invalid_argument& e)
+	{
+		std::cout << "Enter a valid task ID." << std::endl;
+		return;
+	}
+
+	std::vector<std::string> content = read_tasks();
+	std::vector<std::vector<std::string>> seperated_content = split_tasks("all");
+	int no_of_tasks = stoi(content.at(0));
+
+	if (no_of_tasks == 0)
+	{
+		std::cout << "No tasks are available to delete.\nSee help message to know how to create new tasks." << std::endl;
+		return;
+	}
+
+	if (updating_task < 0 || updating_task > no_of_tasks)
+	{
+		std::cout << "The entered task ID is out of valid range." << std::endl;
+		return;
+	}
+	
+	std::ofstream File(".tasks", std::ios::trunc);
+	if (!File.is_open())
+	{
+		std::cout << "Error occurred while trying to open the file." << std::endl;
+	}
+	File << no_of_tasks<< std::endl;
+	
+	for (int i = 0; i < seperated_content.size(); i++)
+	{
+		if (i == (updating_task - 1)) 
+		{
+			File << i + 1 << "," << task << "," << seperated_content[i][2] << std::endl;
+		}
+		else
+		{
+			File << i + 1 << "," << seperated_content[i][1] << "," << seperated_content[i][2] << std::endl;
+		}
+	}
+
+	File.close();
+
+	std::cout << "Task updated successfully." << std::endl;
+
+	
 }

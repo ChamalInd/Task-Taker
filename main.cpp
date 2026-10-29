@@ -23,6 +23,12 @@ int main(int argc, char *argv[])
 	}
 	else if (strcmp(argv[1], "update") == 0)
 	{	
+		if (argc != 4)
+		{
+			std::cout << "Incorrect format for the current option.\nSee help message for correct format." << std::endl;
+			return 1;
+		}
+		update_task(argv[2], argv[3]);
 
 	}
 	else if (strcmp(argv[1], "delete") == 0)
