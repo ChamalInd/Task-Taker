@@ -8,7 +8,6 @@ int TaskManager::getNoOfTasks()
 
 void TaskManager::createNewTask(std::string description)
 {
-	readFromFile();
 	int newId = getNoOfTasks() + 1;
 	Task newTask(newId, description);
 	tasks.push_back(newTask);
@@ -28,7 +27,15 @@ void TaskManager::updateTask(int taskID, std::string newDesc, std::string newSta
 
 void TaskManager::listTasks(std::string status)
 {
-
+	for (Task& task : tasks)
+	{
+		if (status == "all" || status == task.getStatus())
+		{
+			std::cout << task.getID() << ": " << std::endl;
+			std::cout << "Description: " << task.getDescription() << std::endl;
+			std::cout << "Status: " << task.getStatus() << std::endl << std::endl;
+		}
+	}
 }
 
 void TaskManager::taskHelper(std::string app_name)

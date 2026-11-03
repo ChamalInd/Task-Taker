@@ -3,6 +3,8 @@
 int main(int argc, char *argv[])
 {
 	TaskManager task_manager;
+	task_manager.readFromFile();
+
 	if (argc == 1)
 	{
 		std::cout << "Type " << argv[0] << " help for more information" << std::endl;
@@ -73,7 +75,7 @@ int main(int argc, char *argv[])
 			return 1;
 		}
 
-//		view_tasks(option);
+		task_manager.listTasks(option);
 	}
 	else 
 	{

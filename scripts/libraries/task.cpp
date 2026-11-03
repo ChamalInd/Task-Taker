@@ -15,6 +15,11 @@ std::string Task::getStatus()
 {
 	return status;
 }
+
+void Task::setId(int newId)
+{
+	id = newId;
+}
 		
 void Task::setDescription(std::string& newDesc)
 {
