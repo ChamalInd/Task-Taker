@@ -16,7 +16,7 @@ void TaskManager::createNewTask(std::string description)
 
 void TaskManager::deleteTask(int taskID)
 {
-	if (taskID < 0 || taskID > getNoOfTasks())
+	if (taskID < 1 || taskID > getNoOfTasks())
 	{
 		std::cout << "Enter a valid task ID." << std::endl;
 	}
@@ -36,7 +36,7 @@ void TaskManager::deleteTask(int taskID)
 
 void TaskManager::updateTask(int taskID, std::string newDesc, std::string newStat)
 {
-	if (taskID < 0 || taskID > getNoOfTasks())
+	if (taskID < 1 || taskID > getNoOfTasks())
 	{
 		std::cout << "Enter a valid task ID." << std::endl;
 	}
