@@ -31,8 +31,8 @@ int main(int argc, char *argv[])
 			std::cout << "Incorrect format for the current option.\nSee help message for correct format." << std::endl;
 			return 1;
 		}
-//		update_task(argv[2], argv[3]);
-
+		task_manager.updateTask(atoi(argv[2]), argv[3], "same");
+	
 	}
 	else if (strcmp(argv[1], "delete") == 0)
 	{	
@@ -46,12 +46,17 @@ int main(int argc, char *argv[])
 	}
 	else if (strcmp(argv[1], "mark-in-progress") == 0 || strcmp(argv[1], "mark-done") == 0)
 	{	
+		std::string status = "";
 		if (argc != 3)
 		{
 			std::cout << "Incorrect format for the current option.\nSee help message for correct format." << std::endl;
 			return 1;
 		}
-//		update_task_status(argv[1], argv[2]);
+
+		if (strcmp(argv[1], "mark-in-progress") == 0) status = "in-progress";
+		else status = "done";
+
+		task_manager.updateTask(atoi(argv[2]), "same", status);
 
 	}
 	else if (strcmp(argv[1], "list") == 0)
@@ -81,4 +86,7 @@ int main(int argc, char *argv[])
 	{
 		std::cout << "Type " << argv[0] << " help for more information" << std::endl;
 	}
+
+	task_manager.writeToFile();
+	return 0;
 }

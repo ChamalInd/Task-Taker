@@ -12,7 +12,6 @@ void TaskManager::createNewTask(std::string description)
 	Task newTask(newId, description);
 	tasks.push_back(newTask);
 	std::cout << "New Task Created Successfully. [ID : " << newId << "]" << std::endl;
-	writeToFile();
 }
 
 void TaskManager::deleteTask(int taskID)
@@ -22,7 +21,21 @@ void TaskManager::deleteTask(int taskID)
 
 void TaskManager::updateTask(int taskID, std::string newDesc, std::string newStat)
 {
+	if (taskID < 0 || taskID > getNoOfTasks())
+	{
+		std::cout << "Enter a valid task ID." << std::endl;
+	}
 
+	if (newDesc == "same")
+	{
+		tasks.at(taskID - 1).setStatus(newStat);
+		std::cout << "Task " << taskID << ": Marked as " << newStat << "." << std::endl;
+	}
+	else 
+	{
+		tasks.at(taskID - 1).setDescription(newDesc);
+		std::cout << "Task " << taskID << ": Description changed as " << newDesc << "." << std::endl;
+	}
 }
 
 void TaskManager::listTasks(std::string status)
