@@ -16,7 +16,7 @@ class Task
 		std::string getDescription();
 		std::string getStatus();
 		
-		void setId(int newId);
+		void setID(int newId);
 		void setDescription(std::string& newDesc);
 		void setStatus(std::string& newStat);
 

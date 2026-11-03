@@ -16,7 +16,21 @@ void TaskManager::createNewTask(std::string description)
 
 void TaskManager::deleteTask(int taskID)
 {
-
+	if (taskID < 0 || taskID > getNoOfTasks())
+	{
+		std::cout << "Enter a valid task ID." << std::endl;
+	}
+	
+	tasks.erase(tasks.begin() + taskID - 1);
+	
+	int count = 1;
+	for (Task& task : tasks)
+	{
+		task.setID(count);
+		count++;
+	}
+	
+	std::cout << "Task with ID " << taskID << " has been removed." << std::endl;
 }
 
 void TaskManager::updateTask(int taskID, std::string newDesc, std::string newStat)

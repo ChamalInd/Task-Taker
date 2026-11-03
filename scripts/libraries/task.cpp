@@ -16,7 +16,7 @@ std::string Task::getStatus()
 	return status;
 }
 
-void Task::setId(int newId)
+void Task::setID(int newId)
 {
 	id = newId;
 }

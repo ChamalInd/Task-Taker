@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 			std::cout << "Incorrect format for the current option.\nSee help message for correct format." << std::endl;
 			return 1;
 		}
-//		delete_task(argv[2]);
+		task_manager.deleteTask(atoi(argv[2]));
 
 	}
 	else if (strcmp(argv[1], "mark-in-progress") == 0 || strcmp(argv[1], "mark-done") == 0)
