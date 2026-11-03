@@ -28,7 +28,7 @@ void Task::setStatus(std::string& newStat)
 
 std::string Task::convertToString()
 {
-	std::string newString = std::to_string(id) + ";" + description + ";" + status;
+	std::string newString = std::to_string(id) + "|" + description + "|" + status;
 	return newString;
 }
 
@@ -39,7 +39,7 @@ Task Task::convertToTask(std::string& line)
 
 	for (char& c : line)
 	{
-		if (c == ';')
+		if (c == '|')
 		{
 			details.push_back(word);
 			word = "";
