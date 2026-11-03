@@ -1,6 +1,5 @@
 #include "../headers/task.h"
 
-
 int Task::getID()
 {
 	return id; 

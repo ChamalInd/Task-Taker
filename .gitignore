@@ -5,3 +5,6 @@
 *.out
 task-cli
 .DS_Store
+
+# build files
+build/

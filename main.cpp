@@ -1,3 +1,9 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <string>
+
+#include "scripts/headers/task.h"
 #include "scripts/headers/task-manager.h"
 
 int main(int argc, char *argv[])

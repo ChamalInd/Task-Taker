@@ -1,5 +1,4 @@
 #include "../headers/task-manager.h"
-#include <fstream>
 
 int TaskManager::getNoOfTasks()
 {
@@ -12,6 +11,7 @@ void TaskManager::createNewTask(std::string description)
 	Task newTask(newId, description);
 	tasks.push_back(newTask);
 	std::cout << "New Task Created Successfully. [ID : " << newId << "]" << std::endl;
+	writeToFile();
 }
 
 void TaskManager::deleteTask(int taskID)
@@ -31,6 +31,7 @@ void TaskManager::deleteTask(int taskID)
 	}
 	
 	std::cout << "Task with ID " << taskID << " has been removed." << std::endl;
+	writeToFile();
 }
 
 void TaskManager::updateTask(int taskID, std::string newDesc, std::string newStat)
@@ -50,6 +51,7 @@ void TaskManager::updateTask(int taskID, std::string newDesc, std::string newSta
 		tasks.at(taskID - 1).setDescription(newDesc);
 		std::cout << "Task " << taskID << ": Description changed as " << newDesc << "." << std::endl;
 	}
+	writeToFile();
 }
 
 void TaskManager::listTasks(std::string status)
