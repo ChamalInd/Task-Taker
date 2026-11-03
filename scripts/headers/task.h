@@ -9,8 +9,8 @@ class Task
 		std::string status;
 	
 	public:
-		Task(int i, std::string d) : id(1), description(d), status("ToDo") {}
-		Task(int i, std::string d, std::string s) : id(1), description(d), status(s) {}
+		Task() : id(0), description("New Task"), status("ToDo") {}
+		Task(int i, std::string d) : id(i), description(d), status("ToDo") {}
 
 		int getID();
 		std::string getDescription();
@@ -20,5 +20,5 @@ class Task
 		void setStatus(std::string& newStat);
 
 		std::string convertToString();
-		Task convertToTask(std::string& line);
+		void convertToTask(std::string& line);
 };

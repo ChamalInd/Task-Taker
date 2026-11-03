@@ -32,7 +32,7 @@ std::string Task::convertToString()
 	return newString;
 }
 
-Task Task::convertToTask(std::string& line)
+void Task::convertToTask(std::string& line)
 {
 	std::vector<std::string> details;
 	std::string word = "";
@@ -49,7 +49,8 @@ Task Task::convertToTask(std::string& line)
 	}
 	details.push_back(word);
 
-	Task newTask(stoi(details[0]), details[1], details[2]);
-	return newTask;
+	id = stoi(details[0]);
+	description = details[1];
+	status = details[2];
 }
 

@@ -1,4 +1,5 @@
 #include "../headers/task-manager.h"
+#include <fstream>
 
 int TaskManager::getNoOfTasks()
 {
@@ -7,10 +8,12 @@ int TaskManager::getNoOfTasks()
 
 void TaskManager::createNewTask(std::string description)
 {
+	readFromFile();
 	int newId = getNoOfTasks() + 1;
 	Task newTask(newId, description);
 	tasks.push_back(newTask);
 	std::cout << "New Task Created Successfully. [ID : " << newId << "]" << std::endl;
+	writeToFile();
 }
 
 void TaskManager::deleteTask(int taskID)
@@ -45,10 +48,34 @@ void TaskManager::taskHelper(std::string app_name)
 
 void TaskManager::writeToFile()
 {
+	std::ofstream File(".tasks", std::ios::trunc);
+	
+	for (Task& task : tasks)
+	{
+		std::string line = task.convertToString();
+		File << line << std::endl;
+	}
 
+	File.close();
 }
 
 void TaskManager::readFromFile()
 {
+	std::ifstream inFile(".tasks");
+	if (!inFile.is_open())
+	{
+		std::ofstream outFile(".tasks");
+		outFile.close();
+		std::ifstream inFile(".tasks");
+	}
 
+	std::string line;
+	
+	while (std::getline(inFile, line))
+	{
+		Task newTask;
+		newTask.convertToTask(line);
+		tasks.push_back(newTask);
+	}
+	inFile.close();
 }
