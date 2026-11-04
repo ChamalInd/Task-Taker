@@ -2,6 +2,8 @@
 
 A small, fast command-line to-do manager written in C++. Add tasks, update them, track their progress, and list them by status, all from your terminal. Tasks are stored in a plain text file in the directory you run the program from, so every project folder can have its own to-do list.
 
+![Task-Taker demo](assets/demo.gif)
+
 ## Table of Contents
 
 - [Features](#features)
@@ -167,6 +169,8 @@ Task-Taker/
 ├── Makefile                      # Build rules
 ├── README.md
 ├── .gitignore
+├── assets/
+│   └──demo.gif                   # A demo video of the application
 └── scripts/
     ├── headers/
     │   ├── includes.h            # Shared standard-library includes
